@@ -1,0 +1,18 @@
+﻿@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Confirmação de conta";
+    Layout = "_LayoutAuth";
+}
+
+<div class="login-container is-centered">
+    <div class="columns is-vcentered">
+        <div class="column">
+
+            <h2 class="form-title has-text-centered">@ViewData["Title"]</h2>
+            <h3 class="form-subtitle has-text-centered">Sua conta foi confirmada com sucesso. Por favor <a asp-page="./Login">clique aqui para logar.</a></h3>
+
+        </div>
+    </div>
+</div>
+

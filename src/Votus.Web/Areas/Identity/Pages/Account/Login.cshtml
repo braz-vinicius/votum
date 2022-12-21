@@ -1,0 +1,57 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_LayoutAuth";
+}
+<!--Container-->
+<div class="login-container is-centered">
+    <div class="columns is-vcentered">
+        <div class="column">
+
+            <h2 class="form-title has-text-centered">Bem-vindo</h2>
+            <h3 class="form-subtitle has-text-centered">Digite suas credenciais para entrar.</h3>
+
+            <!--Form-->
+            <form id="account" method="post">
+                <div class="login-form">
+                    <div class="form-panel">
+                        <div asp-validation-summary="All" class="message is-danger"></div>
+                        <div class="field">
+                            <label asp-for="Input.Email"></label>
+                            <div class="control">
+                                <input asp-for="Input.Email" class="input" placeholder="Digite seu e-mail">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label asp-for="Input.Password"></label>
+                            <div class="control">
+                                <input asp-for="Input.Password" class="input" placeholder="Digite sua senha">
+                            </div>
+                        </div>
+                        <div class="field is-flex">
+                            <div class="switch-block">
+                                <label class="f-switch">
+                                    <input asp-for="Input.RememberMe" type="checkbox" class="is-switch">
+                                    <i></i>
+                                </label>
+                                <div class="meta">
+                                    <p>Lembrar de mim?</p>
+                                </div>
+                            </div>
+                            <a asp-page="./ForgotPassword">Esqueceu a senha?</a>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="submit" class="button is-solid primary-button is-fullwidth raised">Entrar</button>
+                    </div>
+
+                    <div class="account-link has-text-centered">
+                        <a asp-page="./Register">Não possui conta? Inscreva-se</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

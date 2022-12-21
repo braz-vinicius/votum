@@ -1,0 +1,75 @@
+﻿@using Votus.Infrastructure.Identity
+@using Microsoft.Extensions.Configuration
+
+@inject SignInManager<WebApplicationUser> SignInManager
+@inject UserManager<WebApplicationUser> UserManager
+@inject IConfiguration Configuration
+@{
+    var userDetail = await UserManager.FindByEmailAsync(User.Identity?.Name);
+
+    string GetActivePage(string page)
+    {
+        return ViewData["ActivePage"].Equals(page) ? "is-active" : "";
+    }
+    var apiUrl = Configuration["ApiClient:VotusApiUrl"];
+}
+
+<div class="user-block">
+    <a class="close-settings-sidebar is-hidden">
+        <i data-feather="x"></i>
+    </a>
+    <div class="avatar-wrap">
+        <img src="@(userDetail.ProfileImageUrl??"/assets/cdn/profile/default_user_icon.png")" alt="@userDetail.FullName">
+        <form name="imageUpload">
+            <input name="file" type="file" hidden onchange="handleFileUpload(this);">
+            <a onclick="document.forms.imageUpload.file.click();">
+                <div class="badge">
+                    <i data-feather="camera"></i>
+                </div>
+            </a>
+        </form>
+    </div>
+    <h4>@userDetail.FullName</h4>
+</div>
+<div class="user-menu">
+    <div class="user-menu-inner has-slimscroll">
+        <div class="menu-block">
+            <ul>
+                <li data-section="general" class="@GetActivePage("Index")">
+                    <a asp-page="./Index">
+                        <i data-feather="settings"></i>
+                        <span>Perfil</span>
+                    </a>
+                </li>
+                <li data-section="security" class="@GetActivePage("ChangePassword")">
+                    <a asp-page="./ChangePassword">
+                        <i data-feather="shield"></i>
+                        <span>Segurança</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleFileUpload(source) {
+
+        var formData = new FormData();
+
+        formData.append("file", source.files[0]);
+
+        var id = '@userDetail.Id';
+
+        var url = '@apiUrl/api/account/'+id+'/image';
+        console.log(url);
+        fetch(url,
+            {
+                method: 'POST',
+                body: formData
+            }).then(function() {
+
+                location.reload();
+        });
+    }
+</script>

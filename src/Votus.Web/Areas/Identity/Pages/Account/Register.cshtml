@@ -1,0 +1,83 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registrar";
+    Layout = "_LayoutAuth";
+}
+
+<div class="login-container is-centered">
+    <div class="columns is-vcentered">
+        <div class="column">
+
+            <h2 class="form-title has-text-centered">Olá!</h2>
+            <h3 class="form-subtitle has-text-centered">Vamos criar a sua conta.</h3>
+
+            <!--Form-->
+            <div class="login-form">
+                <div class="form-panel">
+                    <form asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" name="form" method="post">
+                        <div class="columns is-multiline">
+                            <div asp-validation-summary="All" class="message is-danger"></div>
+                            <div class="column is-12">
+                                <div class="field">
+                                    <label asp-for="Input.FullName"></label>
+                                    <div class="control">
+                                        <input asp-for="Input.FullName" class="input" placeholder="Digite seu nome completo">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="column is-12">
+                                <div class="field">
+                                    <label asp-for="Input.Email"></label>
+                                    <div class="control">
+                                        <input asp-for="Input.Email" class="input" placeholder="Digite seu endereço de e-mail">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-12">
+                                <div class="field">
+                                    <label asp-for="Input.BirthDate"></label>
+                                    <div class="control">
+                                        <input asp-for="Input.BirthDate" class="input" placeholder="Digite sua data de nascimento">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label asp-for="Input.Password"></label>
+                                    <div class="control">
+                                        <input asp-for="Input.Password" class="input" placeholder="Digite sua senha">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label asp-for="Input.ConfirmPassword"></label>
+                                    <div class="control">
+                                        <input asp-for="Input.ConfirmPassword" class="input" placeholder="Confirme sua senha">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <div class="buttons mt-2">
+                            <button type="submit" class="button is-solid primary-button is-fullwidth raised">Criar Conta</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="account-link has-text-centered">
+                    <a asp-page="./Login">Possui uma conta? Entrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

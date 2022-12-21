@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Votus.Web.Controllers.PropositionViewModel>
+@{
+    ViewData["Title"] = "Proposições";
+}
+
+
+<div id="events-page" class="events-wrapper">
+    <!--Event List-->
+    <div class="wrapper-inner" style="margin-left: 0; margin-right:0">
+        <div id="event-list" class="event-list" style="width:151%">
+            @foreach (var proposition in Model)
+            {
+                <!-- /partials/pages/events/events-1.html -->
+                <div id="event-1" class="event-item">
+                    <div class="event-inner-wrap">
+                        <h2 class="event-title" style="max-width: 850px">@proposition.Question</h2>
+                        <div class="event-subtitle">
+                            <i data-feather="tag"></i>
+                            <h3>@proposition.Theme</h3>
+                        </div>
+                        <div class="event-content">
+                            <div class="event-description content">
+
+                                <p>
+                                    @proposition.Description
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+
+</div>
