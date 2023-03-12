@@ -18,10 +18,4 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Votus.Application\Votus.Application.csproj" />
-    <ProjectReference Include="..\Votus.Domain\Votus.Domain.csproj" />
-    <ProjectReference Include="..\Votus.Infrastructure.Data\Votus.Infrastructure.Data.csproj" />
-  </ItemGroup>
-
 </Project>
