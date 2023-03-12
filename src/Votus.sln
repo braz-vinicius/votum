@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{BF6BB00E-F720-4ACD-8D78-4D8D0E391B21}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FA3794BD-1C1D-42CC-BF6D-DA31B7004C4B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7C24A639-C6E6-45E2-A71F-CB4755199A98}"
@@ -15,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Votus.Pessoa.API", "Votus.P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Votus.Proposicao.API", "Votus.Proposicao\Votus.Proposicao.API.csproj", "{37B57FF0-14EB-4B02-8EE7-4B95563C0E81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votus.Common", "Votus.Common\Votus.Common.csproj", "{31DD8611-77AF-4F93-AE33-CCDE2A46D62C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Votus.Common", "Votus.Common\Votus.Common.csproj", "{31DD8611-77AF-4F93-AE33-CCDE2A46D62C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
