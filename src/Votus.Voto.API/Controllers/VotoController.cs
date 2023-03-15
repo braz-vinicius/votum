@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace Votus.Voto.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class VotoController : ControllerBase
     {
         private readonly VotoDbContext _context;
@@ -21,7 +23,10 @@ namespace Votus.Voto.API.Controllers
             _context = context;
         }
 
-        // GET: api/Voto
+        /// <summary>
+        /// Obtêm todos os votos cadastrados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Domain.Voto>>> GetVotos()
         {
@@ -32,7 +37,11 @@ namespace Votus.Voto.API.Controllers
             return await _context.Votos.ToListAsync();
         }
 
-        // GET: api/Voto/5
+        /// <summary>
+        /// Obtêm um voto através de um Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Domain.Voto>> GetVoto(Guid id)
         {
@@ -50,8 +59,12 @@ namespace Votus.Voto.API.Controllers
             return voto;
         }
 
-        // PUT: api/Voto/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Atualiza um voto dado um Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="voto"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVoto(Guid id, Domain.Voto voto)
         {
@@ -81,8 +94,11 @@ namespace Votus.Voto.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Voto
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Cria um novo voto
+        /// </summary>
+        /// <param name="voto"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Domain.Voto>> PostVoto(Domain.Voto voto)
         {
@@ -96,7 +112,11 @@ namespace Votus.Voto.API.Controllers
             return CreatedAtAction("GetVoto", new { id = voto.Id }, voto);
         }
 
-        // DELETE: api/Voto/5
+        /// <summary>
+        /// Deleta um voto dado um Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVoto(Guid id)
         {

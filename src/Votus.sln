@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Votus.Common", "Votus.Commo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Votus.Proposicao.API", "Votus.Proposicao.API\Votus.Proposicao.API.csproj", "{7CBBD6BA-E1FB-4C50-9DAF-4E7AE07DDDED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{CD07DCD3-6886-48FE-B61D-93C61EC4078D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votus.Gateway.API", "Votus.Gateway.API\Votus.Gateway.API.csproj", "{1DEDB195-F62B-4966-9F27-DCD9BBFB913F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,10 @@ Global
 		{7CBBD6BA-E1FB-4C50-9DAF-4E7AE07DDDED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CBBD6BA-E1FB-4C50-9DAF-4E7AE07DDDED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CBBD6BA-E1FB-4C50-9DAF-4E7AE07DDDED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DEDB195-F62B-4966-9F27-DCD9BBFB913F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DEDB195-F62B-4966-9F27-DCD9BBFB913F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DEDB195-F62B-4966-9F27-DCD9BBFB913F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DEDB195-F62B-4966-9F27-DCD9BBFB913F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +54,7 @@ Global
 		{3DA886F3-1FB5-42AA-A8FD-F209A58736FF} = {7C24A639-C6E6-45E2-A71F-CB4755199A98}
 		{31DD8611-77AF-4F93-AE33-CCDE2A46D62C} = {FA3794BD-1C1D-42CC-BF6D-DA31B7004C4B}
 		{7CBBD6BA-E1FB-4C50-9DAF-4E7AE07DDDED} = {7C24A639-C6E6-45E2-A71F-CB4755199A98}
+		{1DEDB195-F62B-4966-9F27-DCD9BBFB913F} = {CD07DCD3-6886-48FE-B61D-93C61EC4078D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6405642-6041-4A99-A87F-4B91660D2BB5}

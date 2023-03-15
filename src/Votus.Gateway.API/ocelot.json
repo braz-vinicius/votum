@@ -1,0 +1,117 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/proposicao",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7186
+        }
+      ],
+      "UpstreamPathTemplate": "/proposicao",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "Proposicao"
+    },
+    {
+      "DownstreamPathTemplate": "/api/proposicao/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7186
+        }
+      ],
+      "UpstreamPathTemplate": "/proposicao/{id}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "Proposicao"
+    },
+    {
+      "DownstreamPathTemplate": "/api/voto",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/voto",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "Voto"
+    },
+    {
+      "DownstreamPathTemplate": "/api/voto/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/voto/{id}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "Voto"
+    },
+    {
+      "DownstreamPathTemplate": "/api/pessoa/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7040
+        }
+      ],
+      "UpstreamPathTemplate": "/pessoa/{id}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+      "SwaggerKey": "Pessoa"
+    },
+    {
+      "DownstreamPathTemplate": "/api/pessoa",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7190
+        }
+      ],
+      "UpstreamPathTemplate": "/pessoa",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "Pessoa"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "Proposicao",
+      "Config": [
+        {
+          "Name": "Proposicao API",
+          "Version": "v1",
+          "Url": "https://localhost:7186/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Voto",
+      "Config": [
+        {
+          "Name": "Voto API",
+          "Version": "v1",
+          "Url": "https://localhost:7047/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Pessoa",
+      "Config": [
+        {
+          "Name": "Pessoa API",
+          "Version": "v1",
+          "Url": "https://localhost:7190/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5273"
+  }
+}

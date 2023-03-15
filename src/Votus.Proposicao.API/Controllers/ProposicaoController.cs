@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace Votus.Proposicao.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProposicaoController : ControllerBase
     {
         private readonly ProposicaoDbContext _context;
@@ -21,7 +23,10 @@ namespace Votus.Proposicao.API.Controllers
             _context = context;
         }
 
-        // GET: api/Proposicao
+        /// <summary>
+        /// Lista as proposições
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Domain.Proposicao>>> GetProposicoes()
         {
@@ -32,7 +37,11 @@ namespace Votus.Proposicao.API.Controllers
             return await _context.Proposicoes.ToListAsync();
         }
 
-        // GET: api/Proposicao/5
+        /// <summary>
+        /// Obtêm uma proposição através de um Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Domain.Proposicao>> GetProposicao(Guid id)
         {
@@ -50,8 +59,12 @@ namespace Votus.Proposicao.API.Controllers
             return proposicao;
         }
 
-        // PUT: api/Proposicao/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Atualiza uma proposição
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="proposicao"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProposicao(Guid id, Domain.Proposicao proposicao)
         {
@@ -81,8 +94,11 @@ namespace Votus.Proposicao.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Proposicao
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Cadastra uma nova proposição
+        /// </summary>
+        /// <param name="proposicao"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Domain.Proposicao>> PostProposicao(Domain.Proposicao proposicao)
         {
@@ -96,7 +112,11 @@ namespace Votus.Proposicao.API.Controllers
             return CreatedAtAction("GetProposicao", new { id = proposicao.Id }, proposicao);
         }
 
-        // DELETE: api/Proposicao/5
+        /// <summary>
+        /// Deleta uma proposição através de seu Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProposicao(Guid id)
         {

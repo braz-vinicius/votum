@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace Votus.Pessoa.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PessoaController : ControllerBase
     {
         private readonly PessoaDbContext _context;
@@ -21,7 +23,11 @@ namespace Votus.Pessoa.API.Controllers
             _context = context;
         }
 
-        // GET: api/Pessoa
+
+        /// <summary>
+        /// Lista todas pessoas registradas
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Domain.Pessoa>>> GetPessoas()
         {
@@ -32,7 +38,11 @@ namespace Votus.Pessoa.API.Controllers
             return await _context.Pessoas.ToListAsync();
         }
 
-        // GET: api/Pessoa/5
+        /// <summary>
+        /// Obtêm uma Pessoa dado um Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Domain.Pessoa>> GetPessoa(string id)
         {
@@ -50,8 +60,12 @@ namespace Votus.Pessoa.API.Controllers
             return pessoa;
         }
 
-        // PUT: api/Pessoa/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Atualiza o registro de uma Pessoa
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="pessoa"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPessoa(string id, Domain.Pessoa pessoa)
         {
@@ -81,8 +95,11 @@ namespace Votus.Pessoa.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Pessoa
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Cria uma nova Pessoa
+        /// </summary>
+        /// <param name="pessoa"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Domain.Pessoa>> PostPessoa(Domain.Pessoa pessoa)
         {
@@ -110,7 +127,11 @@ namespace Votus.Pessoa.API.Controllers
             return CreatedAtAction("GetPessoa", new { id = pessoa.Id }, pessoa);
         }
 
-        // DELETE: api/Pessoa/5
+        /// <summary>
+        /// Deleta uma Pessoa dado um Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePessoa(string id)
         {
