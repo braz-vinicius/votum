@@ -1,7 +1,10 @@
 using Keycloak.AuthServices.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Votus.Common.ServiceBus;
 using Votus.Voto.API;
+using Votus.Voto.API.Event;
+using Votus.Voto.API.EventHandlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddHostedService<WorkerServiceBus<ProposicaoChangedEventHandler, ProposicaoChangedEvent>>();
+builder.Services.AddHostedService<WorkerServiceBus<PessoaChangedEventHandler, PessoaChangedEvent>>();
 
 builder.Services.AddSwaggerGen(option =>
 {
@@ -54,6 +60,10 @@ builder.Services.AddDbContext<VotoDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+
+builder.Services.AddTransient<PessoaChangedEventHandler>();
+builder.Services.AddTransient<ProposicaoChangedEventHandler>();
 
 var app = builder.Build();
 

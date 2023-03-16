@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Votus.Proposicao.API;
 using Votus.Proposicao.API.Domain;
+using Votus.Proposicao.API.Event;
 
 namespace Votus.Proposicao.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class ProposicaoController : ControllerBase
     {
         private readonly ProposicaoDbContext _context;
+        private readonly IMediator mediator;
 
-        public ProposicaoController(ProposicaoDbContext context)
+        public ProposicaoController(ProposicaoDbContext context, IMediator mediator)
         {
             _context = context;
+            this.mediator = mediator;
         }
 
         /// <summary>
@@ -74,10 +78,15 @@ namespace Votus.Proposicao.API.Controllers
             }
 
             _context.Entry(proposicao).State = EntityState.Modified;
-
+            
             try
             {
                 await _context.SaveChangesAsync();
+                
+                var proposicaoChangedEvent = new ProposicaoChangedEvent(proposicao.Id.ToString(), proposicao);
+
+                await mediator.Publish(proposicaoChangedEvent);
+
             }
             catch (DbUpdateConcurrencyException)
             {

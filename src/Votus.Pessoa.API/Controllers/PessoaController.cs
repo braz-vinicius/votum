@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Votus.Pessoa.API;
 using Votus.Pessoa.API.Domain;
+using Votus.Pessoa.API.Events;
 
 namespace Votus.Pessoa.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class PessoaController : ControllerBase
     {
         private readonly PessoaDbContext _context;
+        private readonly IMediator mediator;
 
-        public PessoaController(PessoaDbContext context)
+        public PessoaController(PessoaDbContext context, IMediator mediator)
         {
             _context = context;
+            this.mediator = mediator;
         }
 
 
@@ -79,6 +83,7 @@ namespace Votus.Pessoa.API.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                await mediator.Publish(new PessoaChangedEvent(id, pessoa));
             }
             catch (DbUpdateConcurrencyException)
             {
