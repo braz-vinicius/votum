@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "bd580ac3-f386-4242-91fa-214577ef57f4",
+		"name": "Votus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pessoa",
+			"item": [
+				{
+					"name": "Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gw_address}}/pessoa",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pessoa by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gw_address}}/pessoa/013a032b-b255-4e1c-7728-08db265dd0e6",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"pessoa",
+								"013a032b-b255-4e1c-7728-08db265dd0e6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pessoa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nomeCompleto\": \"Jose das Couves\",\r\n        \"userName\": \"josecouves\",\r\n        \"email\": \"jose.couves@gmail.com\",\r\n        \"dataNascimento\": \"1983-03-16T03:19:29.18\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gw_address}}/pessoa",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pessoa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": \"013a032b-b255-4e1c-7728-08db265dd0e6\",\r\n        \"nomeCompleto\": \"Renato Fernandes\",\r\n        \"userName\": \"renatof\",\r\n        \"email\": \"renato@gmail.com\",\r\n        \"dataNascimento\": \"1983-03-16T03:19:29.18\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gw_address}}/pessoa/013a032b-b255-4e1c-7728-08db265dd0e6",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"pessoa",
+								"013a032b-b255-4e1c-7728-08db265dd0e6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Proposicao",
+			"item": [
+				{
+					"name": "POST Proposicao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tema\": \"Direito Penal\",\r\n    \"questao\": \"Você é a favor da redução da maioridade penal?\",\r\n    \"descricao\": \"Reduz a maioridade penal de 18 anos para 16 anos de idade\",\r\n    \"pessoaId\": \"013a032b-b255-4e1c-7728-08db265dd0e6\",\r\n    \"pessoaNome\": \"José das Couves\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gw_address}}/proposicao",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"proposicao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Proposicao by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gw_address}}/proposicao/3dbcfa89-04e9-4c5a-b687-08db265e6f60",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"proposicao",
+								"3dbcfa89-04e9-4c5a-b687-08db265e6f60"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Proposicao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gw_address}}/proposicao",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"proposicao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Proposicao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": \"3dbcfa89-04e9-4c5a-b687-08db265e6f60\",\r\n        \"tema\": \"Direito Penal e Segurança Pública\",\r\n        \"questao\": \"Você é a  da redução da maioridade penal?\",\r\n        \"descricao\": \"Reduz a maioridade penal de 18 anos para 16 anos de idade\",\r\n        \"pessoaId\": \"013a032b-b255-4e1c-7728-08db265dd0e6\",\r\n        \"pessoaNome\": \"José das Couves\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gw_address}}/Proposicao/3dbcfa89-04e9-4c5a-b687-08db265e6f60",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"Proposicao",
+								"3dbcfa89-04e9-4c5a-b687-08db265e6f60"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Voto",
+			"item": [
+				{
+					"name": "Votos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gw_address}}/voto",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"voto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Voto by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gw_address}}/voto/029e096a-128f-44fe-16b0-08db26608f44",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"voto",
+								"029e096a-128f-44fe-16b0-08db26608f44"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Voto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"pessoaNome\": \"José das Couves\",\r\n    \"proposicaoNome\": \"Você é a favor da redução da maioridade penal?\",\r\n    \"value\": 1,\r\n    \"pessoaId\": \"013a032b-b255-4e1c-7728-08db265dd0e6\",\r\n    \"proposicaoId\": \"3dbcfa89-04e9-4c5a-b687-08db265e6f60\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gw_address}}/voto",
+							"host": [
+								"{{gw_address}}"
+							],
+							"path": [
+								"voto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "STS",
+			"item": [
+				{
+					"name": "Get Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic bKTnbZsNeDVo3jujhmRVb9mgPf4OFHEC",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "default"
+								},
+								{
+									"key": "client_id",
+									"value": "votus",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "votus",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123mudar",
+									"type": "default"
+								},
+								{
+									"key": "client_secret",
+									"value": "bKTnbZsNeDVo3jujhmRVb9mgPf4OFHEC",
+									"type": "default"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/auth/realms/votus/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"auth",
+								"realms",
+								"votus",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic bKTnbZsNeDVo3jujhmRVb9mgPf4OFHEC",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "default"
+								},
+								{
+									"key": "client_id",
+									"value": "votus",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "votus",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123mudar",
+									"type": "default"
+								},
+								{
+									"key": "client_secret",
+									"value": "bKTnbZsNeDVo3jujhmRVb9mgPf4OFHEC",
+									"type": "default"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/auth/realms/votus/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"auth",
+								"realms",
+								"votus",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "gw_address",
+			"value": "http://localhost:5273",
+			"type": "default"
+		}
+	]
+}
