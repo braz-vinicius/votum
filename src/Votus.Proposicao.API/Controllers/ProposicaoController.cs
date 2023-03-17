@@ -15,7 +15,7 @@ namespace Votus.Proposicao.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ProposicaoController : ControllerBase
     {
         private readonly ProposicaoDbContext _context;

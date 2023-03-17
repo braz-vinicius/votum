@@ -15,7 +15,7 @@ namespace Votus.Pessoa.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class PessoaController : ControllerBase
     {
         private readonly PessoaDbContext _context;
