@@ -7,21 +7,23 @@ using Votus.Proposicao.API.Event;
 
 namespace Votus.Proposicao.API.EventHandler
 {
-    public class ProposicaoChangedEventHandler : INotificationHandler<ProposicaoChangedEvent>
+    public class ProposicaoChangedNotificationHandler : INotificationHandler<ProposicaoChangedEvent>
     {
         private readonly IConfiguration configuration;
         private readonly ServiceBusClient busClient;
 
-        public ProposicaoChangedEventHandler(IConfiguration configuration)
+        public ProposicaoChangedNotificationHandler(IConfiguration configuration)
         {
             this.configuration = configuration;
-           // this.busClient = new ServiceBusClient(configuration["ServiceBus:ConnectionString"]+ $"EntityPath={typeof(ProposicaoChangedEvent).Name}");
+            
             this.busClient = new ServiceBusClient(configuration["ServiceBus:ConnectionString"]);
         }
         public async Task Handle(ProposicaoChangedEvent notification, CancellationToken cancellationToken)
         {
             var messageEvent = notification;
+            
             var messageJson = JsonSerializer.Serialize(messageEvent, notification.GetType());
+            
             var messageBody = Encoding.UTF8.GetBytes(messageJson);
 
             var sender = busClient.CreateSender(typeof(ProposicaoChangedEvent).Name.ToLower());

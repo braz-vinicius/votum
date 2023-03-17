@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Votus.Proposicao.API;
+using Votus.Pessoa.API;
 
 #nullable disable
 
-namespace Votus.Proposicao.API.Migrations
+namespace Votus.Pessoa.API.Migrations
 {
-    [DbContext(typeof(ProposicaoDbContext))]
-    [Migration("20230312020351_InitialSchema")]
+    [DbContext(typeof(PessoaDbContext))]
+    [Migration("20230316203215_InitialSchema")]
     partial class InitialSchema
     {
         /// <inheritdoc />
@@ -25,27 +25,30 @@ namespace Votus.Proposicao.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Votus.Proposicao.API.Domain.Proposicao", b =>
+            modelBuilder.Entity("Votus.Pessoa.API.Domain.Pessoa", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Descricao")
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Questao")
+                    b.Property<string>("NomeCompleto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Tema")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Proposicoes");
+                    b.ToTable("Pessoas");
                 });
 #pragma warning restore 612, 618
         }

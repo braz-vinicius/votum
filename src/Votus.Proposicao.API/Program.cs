@@ -7,6 +7,7 @@ using System.Configuration;
 using Microsoft.OpenApi.Models;
 using Votus.Common.ServiceBus;
 using Votus.Proposicao.API.EventHandler;
+using Votus.Proposicao.API.Event;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
 });
 
+builder.Services.AddHostedService<WorkerServiceBus<PessoaChangedEventHandler, PessoaChangedEvent>>();
 
 builder.Services.AddSwaggerGen(option =>
 {
@@ -65,6 +67,8 @@ var authenticationOptions = builder.Configuration
     .Get<KeycloakAuthenticationOptions>();
 
 builder.Services.AddKeycloakAuthentication(authenticationOptions);
+
+builder.Services.AddTransient<PessoaChangedEventHandler>();
 
 var app = builder.Build();
 

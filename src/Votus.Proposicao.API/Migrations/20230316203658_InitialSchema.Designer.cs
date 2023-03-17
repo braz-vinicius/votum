@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Votus.Pessoa.API;
+using Votus.Proposicao.API;
 
 #nullable disable
 
-namespace Votus.Pessoa.API.Migrations
+namespace Votus.Proposicao.API.Migrations
 {
-    [DbContext(typeof(PessoaDbContext))]
-    [Migration("20230312011935_InitialSchema")]
+    [DbContext(typeof(ProposicaoDbContext))]
+    [Migration("20230316203658_InitialSchema")]
     partial class InitialSchema
     {
         /// <inheritdoc />
@@ -25,29 +25,35 @@ namespace Votus.Pessoa.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Votus.Pessoa.API.Domain.Pessoa", b =>
+            modelBuilder.Entity("Votus.Proposicao.API.Domain.Proposicao", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
+                    b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NomeCompleto")
+                    b.Property<string>("PessoaId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("PessoaNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Questao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tema")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pessoas");
+                    b.ToTable("Proposicoes");
                 });
 #pragma warning restore 612, 618
         }

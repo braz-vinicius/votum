@@ -15,8 +15,8 @@ namespace Votus.Voto.API.Domain
 
         public VotoValueType Value { get; set; }
 
-        public Guid PessoaId { get; set; }
+        public virtual Guid PessoaId { get; set; }
 
-        public string ProposicaoId { get; set; }
+        public virtual string ProposicaoId { get; set; }
     }
 }

@@ -34,7 +34,9 @@ namespace Votus.Common.ServiceBus
         {
             client = new ServiceBusClient(configuration["ServiceBus:ConnectionString"]);
 
-            processor = client.CreateProcessor(typeof(TEvent).Name.ToLower(), "default", new ServiceBusProcessorOptions());
+            var subscription = configuration["ServiceBus:Subscription"];
+            
+            processor = client.CreateProcessor(typeof(TEvent).Name.ToLower(), subscription, new ServiceBusProcessorOptions());
 
             // add handler to process messages
             processor.ProcessMessageAsync += MessageHandler;

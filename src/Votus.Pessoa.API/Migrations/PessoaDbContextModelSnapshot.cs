@@ -24,8 +24,9 @@ namespace Votus.Pessoa.API.Migrations
 
             modelBuilder.Entity("Votus.Pessoa.API.Domain.Pessoa", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("datetime2");

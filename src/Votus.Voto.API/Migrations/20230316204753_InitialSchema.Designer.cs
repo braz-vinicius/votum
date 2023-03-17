@@ -12,7 +12,7 @@ using Votus.Voto.API;
 namespace Votus.Voto.API.Migrations
 {
     [DbContext(typeof(VotoDbContext))]
-    [Migration("20230312020552_InitialSchema")]
+    [Migration("20230316204753_InitialSchema")]
     partial class InitialSchema
     {
         /// <inheritdoc />

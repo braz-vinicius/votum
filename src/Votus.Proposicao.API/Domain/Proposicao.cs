@@ -22,5 +22,9 @@ namespace Votus.Proposicao.API.Domain
         public string Questao { get; set; }
 
         public string Descricao { get; set; }
+
+        public string PessoaId { get; set; }
+
+        public string PessoaNome { get; set; }
     }
 }

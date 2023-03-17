@@ -58,7 +58,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7040
+          "Port": 7190
         }
       ],
       "UpstreamPathTemplate": "/pessoa/{id}",

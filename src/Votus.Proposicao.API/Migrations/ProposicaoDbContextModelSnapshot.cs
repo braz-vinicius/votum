@@ -32,6 +32,14 @@ namespace Votus.Proposicao.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PessoaId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PessoaNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Questao")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

@@ -48,7 +48,7 @@ namespace Votus.Pessoa.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Domain.Pessoa>> GetPessoa(string id)
+        public async Task<ActionResult<Domain.Pessoa>> GetPessoa(Guid id)
         {
           if (_context.Pessoas == null)
           {
@@ -71,7 +71,7 @@ namespace Votus.Pessoa.API.Controllers
         /// <param name="pessoa"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPessoa(string id, Domain.Pessoa pessoa)
+        public async Task<IActionResult> PutPessoa(Guid id, Domain.Pessoa pessoa)
         {
             if (id != pessoa.Id)
             {
@@ -138,7 +138,7 @@ namespace Votus.Pessoa.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePessoa(string id)
+        public async Task<IActionResult> DeletePessoa(Guid id)
         {
             if (_context.Pessoas == null)
             {
@@ -156,7 +156,7 @@ namespace Votus.Pessoa.API.Controllers
             return NoContent();
         }
 
-        private bool PessoaExists(string id)
+        private bool PessoaExists(Guid id)
         {
             return (_context.Pessoas?.Any(e => e.Id == id)).GetValueOrDefault();
         }

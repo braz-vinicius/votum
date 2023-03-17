@@ -2,8 +2,8 @@
 {
     public enum VotoValueType
     {
-        Yes,
-        No,
-        Abstention
+        Sim = 1,
+        Nao = 2,
+        Abstencao = 3
     }
 }

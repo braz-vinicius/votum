@@ -17,38 +17,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHostedService<WorkerServiceBus<ProposicaoChangedEventHandler, ProposicaoChangedEvent>>();
 builder.Services.AddHostedService<WorkerServiceBus<PessoaChangedEventHandler, PessoaChangedEvent>>();
 
-builder.Services.AddSwaggerGen(option =>
+builder.Services.AddSwaggerGen((Action<Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions>)(option =>
 {
-
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Voto API", Version = "v1" });
-    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        In = ParameterLocation.Header,
-        Description = "Please enter a valid token",
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        BearerFormat = "JWT",
-        Scheme = "Bearer"
-    });
-
-    var filePath = Path.Combine(AppContext.BaseDirectory, "Votus.Voto.API.xml");
-    option.IncludeXmlComments(filePath);
-
-    option.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type=ReferenceType.SecurityScheme,
-                    Id="Bearer"
-                }
-            },
-            new string[]{}
-        }
-    });
-});
+    ConfigureSwagger(option);
+}));
 
 var authenticationOptions = builder.Configuration
     .GetSection(KeycloakAuthenticationOptions.Section)
@@ -81,3 +53,35 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static void ConfigureSwagger(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions option)
+{
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Voto API", Version = "v1" });
+    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+
+    var filePath = Path.Combine(AppContext.BaseDirectory, "Votus.Voto.API.xml");
+    option.IncludeXmlComments(filePath);
+
+    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+}
