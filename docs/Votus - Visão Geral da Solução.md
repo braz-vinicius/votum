@@ -3,17 +3,20 @@
     - [**Descrição do problema**](#descrição-do-problema)
     - [**Descrição geral do sistema**](#descrição-geral-do-sistema)
     - [**Restrições de escopo**](#restrições-de-escopo)
-    - [**Referências**](#referências)
   - [**Casos de Uso**](#casos-de-uso)
-    - [**UC1. Cadastro de pessoa física**](#uc1-cadastro-de-pessoa-física)
-    - [**UC2. Cadastro de pessoa jurídica**](#uc2-cadastro-de-pessoa-jurídica)
-    - [**UC3. Cadastro de pessoa política**](#uc3-cadastro-de-pessoa-política)
-    - [**UC4. Cadastro de proposição**](#uc4-cadastro-de-proposição)
-    - [**UC5. Voto em proposição**](#uc5-voto-em-proposição)
+    - [**UC1. Cadastro de pessoa**](#uc1-cadastro-de-pessoa)
+    - [**UC2. Edição de pessoa**](#uc2-edição-de-pessoa)
+    - [**UC3. Obter pessoas cadastradas**](#uc3-obter-pessoas-cadastradas)
+    - [**UC4. Obter pessoa cadastrada por ID**](#uc4-obter-pessoa-cadastrada-por-id)
+    - [**UC5. Remover pessoa**](#uc5-remover-pessoa)
   - [**Desenho do domínio de negócios**](#desenho-do-domínio-de-negócios)
-  - [**Desenho e modelagem arquitetural**](#desenho-e-modelagem-arquitetural)
+  - [**Desenho e modelagem de arquitetura**](#desenho-e-modelagem-de-arquitetura)
     - [**Diagram de arquitetura**](#diagram-de-arquitetura)
     - [**Diagrama de classes**](#diagrama-de-classes)
+      - [Arquitetura geral](#arquitetura-geral)
+      - [Pessoa](#pessoa)
+      - [Proposição](#proposição)
+      - [Voto](#voto)
  
 # **Documento de Visão Geral da Solução**
 
@@ -21,23 +24,19 @@
 Este documento especifica os requisitos do sistema Votum, fornecendo aos arquitetos e desenvolvedores as informações necessárias para o projeto e implementação, assim como para a realização dos testes e homologação do sistema.
 
 ### **Descrição do problema**
-Atualmente um dos grandes problemas da democracia representativa se dá pela falta de conexão entre o interesse de quem vota e o interesse daquele que é eleito, bem como suas atitudes no exercício do mandato. Como forma de resolver este problema, propomos a criação de um plataforma digital composta por Aplicativos Web e APIs que tem por finalidade aproximar ambas as partes do processo, tornando a mais responsável e participativa.
+Atualmente um dos grandes problemas da democracia representativa se dá pela falta de conexão entre o interesse de quem vota e o interesse daquele que é eleito, bem como suas atitudes no exercício do mandato. Como forma de resolver este problema, propomos a criação de um plataforma digital composta por uma WebAPI que tem por finalidade aproximar ambas as partes do processo, tornando a mais responsável e participativa.
 
 ### **Descrição geral do sistema**
-O sistema proposto é uma rede social desenvolvido utilizando as tecnologias que tem por finalidade conectar representantes políticos e cidadãos através de seus votos sobre os mais diversos assuntos que são pauta nas casas legislativas. A partir dessas informações será possível apresentar ao usuário o seu perfil de voto e candidato mais adequado ao seu perfil.
+O sistema proposto é uma API desenvolvida utilizando tecnologias que tem por finalidade conectar pessoas através de seus votos sobre os mais diversos assuntos que são pauta nas casas legislativas. A partir dessas informações será possível apresentar ao usuário o seu perfil de voto e candidato mais adequado ao seu perfil.
 
 ### **Restrições de escopo**
 
 - O voto em uma proposição deverá ser imutável, não podendo ser substítuido após o seu cadastro.
 - O sistema não suportará os navegadores Internet Explorer e Netscape. 
 
-### **Referências**
-- Rizzoni, Ariadne M. B. e Chiossi, Thelma C. dos Santos. Introdução à 
-Engenharia de Software. Editora da Unicamp, 2001.
-
 ## **Casos de Uso**
 
-### **UC1. Cadastro de pessoa física**
+### **UC1. Cadastro de pessoa**
 
 **Objetivo** : Permitir que o usuário se cadastre no sistema como pessoa física.
 
@@ -67,7 +66,7 @@ Engenharia de Software. Editora da Unicamp, 2001.
 2. O ator confirma a mensagem de erro;
 3. O sistema retorna para a tela anterior;
 
-### **UC2. Cadastro de pessoa jurídica**
+### **UC2. Edição de pessoa**
 
 **Objetivo** : Permitir que o usuário se cadastre no sistema como pessoa jurídica.
 
@@ -97,7 +96,7 @@ Engenharia de Software. Editora da Unicamp, 2001.
 2. O ator confirma a mensagem de erro;
 3. O sistema retorna para a tela anterior;
 
-### **UC3. Cadastro de pessoa política**
+### **UC3. Obter pessoas cadastradas**
 
 **Objetivo** : Permitir que o usuário se cadastre no sistema como pessoa política.
 
@@ -129,7 +128,7 @@ Engenharia de Software. Editora da Unicamp, 2001.
 2. O ator confirma a mensagem de erro;
 3. O sistema retorna para a tela anterior;
 
-### **UC4. Cadastro de proposição**
+### **UC4. Obter pessoa cadastrada por ID**
 
 **Objetivo** : Permitir que o usuário cadastre uma proposição.
 
@@ -154,7 +153,7 @@ Engenharia de Software. Editora da Unicamp, 2001.
 2. O ator confirma a mensagem de erro;
 3. O sistema retorna para a tela anterior;
 
-### **UC5. Voto em proposição**
+### **UC5. Remover pessoa**
 
 **Objetivo** : Permitir que o usuário vote em uma proposição legislativa.
 
@@ -183,7 +182,7 @@ Engenharia de Software. Editora da Unicamp, 2001.
 ![Diagrama modelo de domínio](./Domain%20Model.png)
 
 
-## **Desenho e modelagem arquitetural**
+## **Desenho e modelagem de arquitetura**
 
 A presente proposta de solução será desenhada e implementada por meio da arquitetura de microserviços. A partir da análise do modelo de negócios foram mapeados os seguintes sub-domínios:
 
@@ -191,11 +190,18 @@ A presente proposta de solução será desenhada e implementada por meio da arqu
 - Voto: Responsável pelo gerenciamento e contagem dos votos.
 - Proposição: Responsável pelo cadastro e gerenciamento das proposições.
 
-
-
 ### **Diagram de arquitetura**
 ![Diagrama arquitetural de alto nível](./Architecture%20Model.png)
 
 ### **Diagrama de classes**
-![Diagrama de classes](./ClassesDiagram.png)
+
+#### Arquitetura geral
+![Diagrama de classes](./ClasseDiagramGeneral.png)
+#### Pessoa
+![Diagrama de classes](./ClasseDiagramPessoa.png)
+#### Proposição
+![Diagrama de classes](./ClasseDiagramProposicao.png)
+#### Voto
+![Diagrama de classes](./ClasseDiagramVoto.png)
+
 
