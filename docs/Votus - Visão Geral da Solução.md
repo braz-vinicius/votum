@@ -4,6 +4,7 @@
     - [**Descrição geral do sistema**](#descrição-geral-do-sistema)
     - [**Restrições de escopo**](#restrições-de-escopo)
     - [**Referências**](#referências)
+    - [**Futuras Implementações**](#futuras-implementações)    
   - [**Casos de Uso**](#casos-de-uso)
     - [**UC1. Cadastro de pessoa física**](#uc1-cadastro-de-pessoa-física)
     - [**UC2. Cadastro de pessoa jurídica**](#uc2-cadastro-de-pessoa-jurídica)
@@ -30,6 +31,10 @@ O sistema proposto é uma rede social desenvolvido utilizando as tecnologias que
 
 - O voto em uma proposição deverá ser imutável, não podendo ser substítuido após o seu cadastro.
 - O sistema não suportará os navegadores Internet Explorer e Netscape. 
+
+## Futuras Implementações
+
+Para futuras implementações a solução deverá ser conectada com um motor de estatísticas para recomendar o perfil de voto dos usuários.
 
 ### **Referências**
 - Rizzoni, Ariadne M. B. e Chiossi, Thelma C. dos Santos. Introdução à 
